@@ -23,6 +23,7 @@ router.get('/users', function (req, res){
     {user: 'Q', email: "quetzalcoatl@aztec.com"}
   ]);
 });
+
 //8
 module.exports = router;
 

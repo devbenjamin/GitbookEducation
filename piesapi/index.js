@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const pie = require('./controllers/piecontroller.js')
+const pie = require('./controllers/piecontroller.js');
 
 app.use(express.static(__dirname + '/public'));
 console.log(__dirname);
