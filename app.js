@@ -5,11 +5,11 @@ const sequalize = require('./db')
 
 sequalize.sync();
 
-app.listen(3000) //5
+app.listen(3000, function () {
+    console.log("Yay, you don\'t conmpletely suck at coding!!")
+})
 
-app.use('/api/test', function(req, res){
+app.use('/api/test', function (req, res) {
     res.send("This is data from the /api/test endpoint. It's from the server.");
 });
 app.use('/test', test) // this routes everything to testcontroller. it listens for "/test", routes to testcontroller and makes that base URL /test
-
-

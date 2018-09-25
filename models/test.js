@@ -3,3 +3,4 @@ module.exports = function (sequelize, DataTypes) {
         testdata: DataTypes.STRING
     })
 }
+
