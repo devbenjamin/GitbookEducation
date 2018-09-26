@@ -2,8 +2,11 @@ const express = require('express');
 const app = express();
 const test = require('./controllers/testcontroller')
 const sequalize = require('./db')
+const bodyParser = require('body-parser')
 
-sequalize.sync();
+sequalize.sync();  //tip: {force: true} for resetting tables
+
+app.use(bodyParser.json())
 
 app.listen(3000, function () {
     console.log("Yay, you don\'t conmpletely suck at coding!!")

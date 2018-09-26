@@ -3,6 +3,12 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const pie = require('./controllers/piecontroller.js');
+const sequelize = require ('./db')
+const bodyParser = require('body-parser')
+
+sequelize.sync();
+
+app.use(bodyParser.json())
 
 app.use(express.static(__dirname + '/public'));
 console.log(__dirname);
