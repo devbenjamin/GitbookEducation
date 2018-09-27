@@ -6,10 +6,10 @@ const bodyParser = require('body-parser')
 
 sequalize.sync();  //tip: {force: true} for resetting tables
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.listen(3000, function () {
-    console.log("Yay, you don\'t conmpletely suck at coding!!")
+    console.log("Yay, you don't completely suck at coding!! port: 3000");
 })
 
 app.use('/api/test', function (req, res) {

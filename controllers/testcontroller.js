@@ -31,7 +31,7 @@ router.post('/two', function (req, res) {
  * Controller Method #3: req.body
  ****************************************/
 router.post('/three', function (req, res) {
-  let testData = req.body.item;
+  let testData = req.body.testdata.item;
 
   TestModel
     .create({
@@ -41,33 +41,83 @@ router.post('/three', function (req, res) {
   //console.log("Test three went through!")
 });
 
-router.get('/about', function (req, res) {
-  res.send('This is an ABOUT route!');
-});
+/****************************************
+ * Step 4:: use this with postman
+ ****************************************/
 
-router.get('/contact', function (req, res) {
-  res.send({
-    user: "kenn",
-    email: "kenn@beastmode.com"
-  });
-});
-router.get('/projects', function (req, res) {
-  res.send(['Project 1', 'Project 2']);
-});
-router.get('/users', function (req, res) {
-  res.send([{
-      user: "Bill-Bob",
-      email: "billy-bob@beastmode.com"
-    },
-    {
-      user: "Larry",
-      email: "lars@iupd.com"
-    },
-    {
-      user: 'Q',
-      email: "quetzalcoatl@aztec.com"
+router.post('/four', function (req, res) {
+  let testData = req.body.testdata.item;
+  TestModel.create({
+    testdata: testData
+  })
+  .then (
+    function message() {
+      res.send("Test 4 went through!!")
     }
-  ]);
-});
+  )
+})
+
+/*********************
+ * Route 5: Return data in a Promise
+ **********************/
+router.post('/five', function (req, res) {
+  let testData = req.body.testdata.item;
+  TestModel.create({
+    testdata: testData
+  })
+  .then(
+    function message(data) {
+      res.send(data)
+    }
+  )
+})
+
+/*********************
+ * Route 6: Return response as JSON
+ **********************/
+router.post('/six', function (req,res) {
+  let testData = req.body.testdata.item;
+  TestModel.create({
+    testdata:testData
+  })
+  .then(
+    function message(testdata) {
+      res.json({
+        testdata: testdata
+      })
+    }
+  )
+})
+
+
+
+// router.get('/about', function (req, res) {
+//   res.send('This is an ABOUT route!');
+// });
+
+// router.get('/contact', function (req, res) {
+//   res.send({
+//     user: "kenn",
+//     email: "kenn@beastmode.com"
+//   });
+// });
+// router.get('/projects', function (req, res) {
+//   res.send(['Project 1', 'Project 2']);
+// });
+// router.get('/users', function (req, res) {
+//   res.send([{
+//       user: "Bill-Bob",
+//       email: "billy-bob@beastmode.com"
+//     },
+//     {
+//       user: "Larry",
+//       email: "lars@iupd.com"
+//     },
+//     {
+//       user: 'Q',
+//       email: "quetzalcoatl@aztec.com"
+//     }
+//   ]);
+// });
 
 module.exports = router;
