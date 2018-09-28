@@ -48,13 +48,13 @@ router.post('/three', function (req, res) {
 router.post('/four', function (req, res) {
   let testData = req.body.testdata.item;
   TestModel.create({
-    testdata: testData
-  })
-  .then (
-    function message() {
-      res.send("Test 4 went through!!")
-    }
-  )
+      testdata: testData
+    })
+    .then(
+      function message() {
+        res.send("Test 4 went through!!")
+      }
+    )
 })
 
 /*********************
@@ -63,30 +63,52 @@ router.post('/four', function (req, res) {
 router.post('/five', function (req, res) {
   let testData = req.body.testdata.item;
   TestModel.create({
-    testdata: testData
-  })
-  .then(
-    function message(data) {
-      res.send(data)
-    }
-  )
+      testdata: testData
+    })
+    .then(
+      function message(data) {
+        res.send(data)
+      }
+    )
 })
 
 /*********************
  * Route 6: Return response as JSON
  **********************/
-router.post('/six', function (req,res) {
+router.post('/six', function (req, res) {
   let testData = req.body.testdata.item;
   TestModel.create({
-    testdata:testData
-  })
-  .then(
-    function message(testdata) {
-      res.json({
-        testdata: testdata
-      })
-    }
-  )
+      testdata: testData
+    })
+    .then(
+      function message(testdata) {
+        res.json({
+          testdata: testdata
+        })
+      }
+    )
+})
+
+/*********************
+ * Route 7: Handle errors
+ **********************/
+router.post('/seven', function (req, res) {
+  let testData = req.body.testdata.item;
+
+  TestModel
+    .create({
+      testdata: testData
+    })
+    .then(
+      function createSuccess(testdata) {
+        res.json({
+          testdata: testdata
+        })
+      },
+      function createError(err) {
+        res.send(500, err.message)
+      }
+    )
 })
 
 
